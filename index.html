@@ -29,6 +29,7 @@
       <li class="mdl-list__item mdl-list__item--three-line topic">
               <span class="mdl-list__item-primary-content">
               <i class="material-icons  mdl-list__item-avatar">person</i>
+              <!-- person_outline (no votes); person <1 vote>; person_add (temp during upvote?); people_alt (majority)-->
               <span class="topic-title">Topic Title</span>
               <span class="mdl-list__item-text-body topic-description">
                   Description goes here.... maybe.
@@ -37,10 +38,17 @@
               <span class="mdl-list__item-secondary-content">
                     <a class="mdl-list__item-secondary-action" href="#">
                     <button class="mdl-button mdl-js-button mdl-button--icon">
-                            <i class="material-icons">thumb_up</i>
+                            <i class="material-icons">person_outline</i>
                           </button></a>
-              <a class="mdl-list__item-secondary-action" href="#"><i class="material-icons upvote">thumb_up</i></a>
-              <a class="mdl-list__item-secondary-action" href="#"><i class="material-icons downvote">thumb_down</i></a>
+              <a class="mdl-list__item-secondary-action" href="#"><i class="material-icons upvote">person_add</i></a>
+              <!-- <a class="mdl-list__item-secondary-action" href="#"><i class="material-icons downvote">thumb_down</i></a> -->
+              <!-- block (null sign on left); 
+                person_add_disabled (looks like an add with a slash through it)
+                replay_5 (ask for five more minutes)
+                fast_forward (skip to end of meeting)
+                recent_actors (see conversations from last session?)
+                not_interested (circle slash)
+                how_to_vote (needs vote); ballot; -->
               </span>
           </li>      
     </div>
@@ -61,9 +69,37 @@
 					<a class="mdl-navigation__link visible-before-auth" href="#" onclick="hidemenu()">Main</a>
 				</nav>
 			</div>
-			<main class="mdl-layout__content">
+
+      <div class="mdc-tab-bar" role="tablist">
+        <div class="mdc-tab-scroller">
+          <div class="mdc-tab-scroller__scroll-area mdc-tab-scroller__scroll-area--scroll" style="margin-bottom: 0px;">
+            <div class="mdc-tab-scroller__scroll-content">
+              <button class="mdc-tab mdc-tab--active" role="tab" aria-selected="true" tabindex="0" id="mdc-tab-4">
+                <span class="mdc-tab__content">
+                  <span class="mdc-tab__icon material-icons" aria-hidden="true">access_time</span>
+                  <span class="mdc-tab__text-label">New (needs vote)</span>
+                </span>
+                <span class="mdc-tab-indicator mdc-tab-indicator--active">
+                  <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline" style=""></span>
+                </span>
+                <span class="mdc-tab__ripple mdc-ripple-upgraded" style="--mdc-ripple-fg-size:239px; --mdc-ripple-fg-scale:1.72158; --mdc-ripple-fg-translate-start:93.5973px, -84.3979px; --mdc-ripple-fg-translate-end:79.7891px, -95.5px;"></span>
+              </button>
+              <button class="mdc-tab" role="tab" aria-selected="false" tabindex="-1" id="mdc-tab-5"><span class="mdc-tab__content"><span class="mdc-tab__icon material-icons" aria-hidden="true">near_me</span>
+                <span class="mdc-tab__text-label">My topics</span></span>
+                <span class="mdc-tab-indicator">
+                  <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline" style=""></span></span>
+                  <span class="mdc-tab__ripple mdc-ripple-upgraded" style="--mdc-ripple-fg-size:233px; --mdc-ripple-fg-scale:1.72651; --mdc-ripple-fg-translate-start:113.116px, -74.1465px; --mdc-ripple-fg-translate-end:78.1641px, -92.5px;"></span>
+                </button>
+                <button class="mdc-tab" role="tab" aria-selected="false" tabindex="-1" id="mdc-tab-6"><span class="mdc-tab__content">
+                  <span class="mdc-tab__icon material-icons" aria-hidden="true">favorite</span>
+                  <span class="mdc-tab__text-label">Popular</span></span><span class="mdc-tab-indicator">
+                    <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline" style=""></span></span>
+                  <span class="mdc-tab__ripple mdc-ripple-upgraded" style="--mdc-ripple-fg-size:247px; --mdc-ripple-fg-scale:1.7201; --mdc-ripple-fg-translate-start:69.8093px, -97.2627px; --mdc-ripple-fg-translate-end:82.5391px, -99.5px;">
+      </span></button></div></div></div></div>
+
+      <main class="mdl-layout__content">
         <div class="page-content app-page visible" id="page-main">
-          <h4>Main page</h4>
+          
             <!-- Three Line List with secondary info and action -->
             <style>
                 .demo-list-three {
