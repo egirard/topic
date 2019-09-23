@@ -28,7 +28,7 @@
     <div id="templates">
       <li class="mdl-list__item mdl-list__item--three-line topic">
               <span class="mdl-list__item-primary-content">
-              <i class="material-icons  mdl-list__item-avatar">person</i>
+              <i class="material-icons  mdl-list__item-avatar">people</i>
               <!-- person_outline (no votes); person <1 vote>; person_add (temp during upvote?); people_alt (majority)-->
               <span class="topic-title">Topic Title</span>
               <span class="mdl-list__item-text-body topic-description">
@@ -36,11 +36,17 @@
               </span>
               </span>
               <span class="mdl-list__item-secondary-content">
+                <span>
                     <a class="mdl-list__item-secondary-action" href="#">
-                    <button class="mdl-button mdl-js-button mdl-button--icon">
+                    <button class="mdl-button mdl-js-button mdl-button--icon ignore">
                             <i class="material-icons">person_outline</i>
                           </button></a>
-              <a class="mdl-list__item-secondary-action" href="#"><i class="material-icons upvote">person_add</i></a>
+                          <a class="mdl-list__item-secondary-action" href="#">
+                              <button class="mdl-button mdl-js-button mdl-button--icon upvote">
+                                      <i class="material-icons">person_add</i>
+                                    </button></a>
+              <!-- <a class="mdl-list__item-secondary-action" href="#"><i class="material-icons upvote">person_add</i></a> -->
+                                  </span>
               <!-- <a class="mdl-list__item-secondary-action" href="#"><i class="material-icons downvote">thumb_down</i></a> -->
               <!-- block (null sign on left); 
                 person_add_disabled (looks like an add with a slash through it)
@@ -131,16 +137,16 @@
     
           <div class="demo-card-square mdl-card mdl-shadow--2dp">
             <div class="mdl-card__title mdl-card--expand">
-              <h2 class="mdl-card__title-text">Update</h2>
+              <h2 class="mdl-card__title-text" style="color: black">Add a new topic</h2>
             </div>
             <form action="#" id="formNewTopic">
               <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                 <input class="mdl-textfield__input" type="text" id="newTopicTitle">
-                <label class="mdl-textfield__label" for="newTopicTitle">What's your topic title...</label>
+                <label class="mdl-textfield__label" for="newTopicTitle">Snappy title goes here...</label>
               </div>
               <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                 <input class="mdl-textfield__input" type="text" id="newTopicDescription">
-                <label class="mdl-textfield__label" for="newTopicDescription">Describe it - what do you want to talk about?</label>
+                <label class="mdl-textfield__label" for="newTopicDescription">Describe it - what will we talk about?</label>
               </div>
             
               <div class="mdl-card__actions mdl-card--border">
