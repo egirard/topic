@@ -23,3 +23,6 @@
 .actions {
   white-space: nowrap;
 }
+#page-main .mdl-tabs__tab {
+  padding: 0 2px;
+}

@@ -62,42 +62,33 @@
 				</nav>
 			</div>
 
-      <div class="mdc-tab-bar" role="tablist">
-        <div class="mdc-tab-scroller">
-          <div class="mdc-tab-scroller__scroll-area mdc-tab-scroller__scroll-area--scroll" style="margin-bottom: 0px;">
-            <div class="mdc-tab-scroller__scroll-content">
-              <button class="mdc-tab mdc-tab--active" role="tab" aria-selected="true" tabindex="0" id="mdc-tab-4">
-                <span class="mdc-tab__content">
-                  <span class="mdc-tab__icon material-icons" aria-hidden="true">access_time</span>
-                  <span class="mdc-tab__text-label">New (needs vote)</span>
-                </span>
-                <span class="mdc-tab-indicator mdc-tab-indicator--active">
-                  <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline" style=""></span>
-                </span>
-                <span class="mdc-tab__ripple mdc-ripple-upgraded" style="--mdc-ripple-fg-size:239px; --mdc-ripple-fg-scale:1.72158; --mdc-ripple-fg-translate-start:93.5973px, -84.3979px; --mdc-ripple-fg-translate-end:79.7891px, -95.5px;"></span>
-              </button>
-              <button class="mdc-tab" role="tab" aria-selected="false" tabindex="-1" id="mdc-tab-5"><span class="mdc-tab__content"><span class="mdc-tab__icon material-icons" aria-hidden="true">near_me</span>
-                <span class="mdc-tab__text-label">My topics</span></span>
-                <span class="mdc-tab-indicator">
-                  <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline" style=""></span></span>
-                  <span class="mdc-tab__ripple mdc-ripple-upgraded" style="--mdc-ripple-fg-size:233px; --mdc-ripple-fg-scale:1.72651; --mdc-ripple-fg-translate-start:113.116px, -74.1465px; --mdc-ripple-fg-translate-end:78.1641px, -92.5px;"></span>
-                </button>
-                <button class="mdc-tab" role="tab" aria-selected="false" tabindex="-1" id="mdc-tab-6"><span class="mdc-tab__content">
-                  <span class="mdc-tab__icon material-icons" aria-hidden="true">favorite</span>
-                  <span class="mdc-tab__text-label">Popular</span></span><span class="mdc-tab-indicator">
-                    <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline" style=""></span></span>
-                  <span class="mdc-tab__ripple mdc-ripple-upgraded" style="--mdc-ripple-fg-size:247px; --mdc-ripple-fg-scale:1.7201; --mdc-ripple-fg-translate-start:69.8093px, -97.2627px; --mdc-ripple-fg-translate-end:82.5391px, -99.5px;">
-      </span></button></div></div></div></div>
-
       <main class="mdl-layout__content">
         <div class="page-content app-page visible" id="page-main">
-          
+          <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+            <div class="mdl-tabs__tab-bar">
+              <a href="#new" class="mdl-tabs__tab is-active" id="mdc-tab-4">
+                <i class="material-icons">access_time</i>
+                New (needs vote)
+              </a>
+              <a href="#near-me" class="mdl-tabs__tab" id="mdc-tab-5">
+                <i class="material-icons">near_me</i>
+                My topics
+              </a>
+              <a href="#favorite" class="mdl-tabs__tab" id="mdc-tab-6">
+                <i class="material-icons">favorite</i>
+                Popular
+              </a>
+            </div>
+            <!-- Technically the tabs choose which of these sections are visible
+                but we are just using them programmatically. -->
+            <div class="mdl-tabs__panel is-active" id="new">
+            </div>
+            <div class="mdl-tabs__panel is-active" id="near-me">
+            </div>
+            <div class="mdl-tabs__panel is-active" id="favorite">
+            </div>
+          </div>
             <!-- Three Line List with secondary info and action -->
-            <style>
-                .demo-list-three {
-                
-                }
-                </style>
                 
                 <ul id="topic-list" class="demo-list-three mdl-list">
                 </ul>
