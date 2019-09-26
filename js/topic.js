@@ -41,18 +41,17 @@ async function handleUpdates(room) {
       console.log(evt);
       if (evt.content.newlyAddedTopic) {
           if (evt.content.user_id = user_id) {
-            // vote for pedro
+            // TODO: vote for pedro
           }
           let elem = cloneTemplate('topic');
+          let topic = evt.content.newlyAddedTopic;
+          elem.topic = topic;
           elem.creator = evt.content.user_id;
           elem.upvotes = new Set([]);
           elem.ignored = new Set([]);
-          let topic = evt.content.newlyAddedTopic;
           elem.querySelector('.topic-title').textContent = topic;
           let desc = evt.content.newlyAddedTopicDescription || "No description";
           elem.querySelector('.topic-description').textContent = desc;
-          // Add details and handlers
-          elem.querySelector('.topic-description').textContent = desc;/////
           let ignore = elem.querySelector(".ignore");
           ignore.topic = topic
           ignore.addEventListener('click',ignoreTopic);
@@ -61,7 +60,8 @@ async function handleUpdates(room) {
           upvote.addEventListener('click',upvoteTopic);
         
           $('#topic-list').appendChild(elem);
-      }
+          updateAllTopicFlags();
+        }
       else if (evt.content.vote_ignore || evt.content.vote_upvote) {
         let topic = evt.content.newlyAddedTopic;
         setVote( evt.content.topic,
@@ -77,10 +77,10 @@ function findTopic(topic){
   let topicList = $('#topic-list');
   for (var index in topicList.children) {
     let topicItem = topicList.children[index];
-    let child = topicItem.querySelector('.topic-title');
-    if (child && child.textContent && child.textContent == topic)
+    if (topicItem.topic == topic)
       return topicItem;
   }
+  console.log("Failure finding topic '" & topic & "'");
 }
 
 let mode = {
@@ -118,10 +118,13 @@ function updateAllTopicFlags() {
     let visible;
     if (mode.showNeedsVote) {
       visible = !(topicItem.ignored.has(user_id) || topicItem.upvotes.has(user_id));
+      child.textContent = topicItem.topic;
     } else if (mode.showMyTopics) {
       visible = topicItem.creator == user_id;
+      child.textContent = topicItem.topic;
     } else if (mode.showTopTopics) {
       visible = topicItem.upvotes.size >= 1;
+      child.textContent = "["+topicItem.upvotes.size+"] "+ topicItem.topic;
     }
     if (visible) {
       topicItem.classList.add('visible');
@@ -137,7 +140,6 @@ function updateAllTopicFlags() {
       }
     } else {
       topicItem.style.display = "none";
-//      topicItem.classList.remove('visible');      
     }
   }
 }
@@ -145,16 +147,12 @@ function updateAllTopicFlags() {
 function setVote( topic, user, ignored, upvote) {
   let item = findTopic(topic);
   if (ignored) {
-    //if (item.upvotes.has( user))
-      item.upvotes.delete(user);
-    //if (!item.ignored.has( user))
-      item.ignored.add(user);
+    item.upvotes.delete(user);
+    item.ignored.add(user);
   }
   if (upvote) {
-    //if (item.ignored.has( user))
-      item.ignored.delete(user);
-    //if (!item.upvotes.has( user))
-      item.upvotes.add(user);
+    item.ignored.delete(user);
+    item.upvotes.add(user);
   }
   updateAllTopicFlags();
 }
@@ -171,7 +169,6 @@ function initUI() {
     evt.preventDefault();
     confirmAdd();
   }
-  // TODO: Wire tabstrip up to mode
   let tab = document.getElementById("mdc-tab-4");
   tab.addEventListener('click',ShowNeedsVote);
   tab = document.getElementById("mdc-tab-5");
