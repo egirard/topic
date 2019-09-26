@@ -8,9 +8,18 @@ const TOPIC_ROOM = '!zIlIGXfNAskJbYZvgO:matrix.org';
 const MATRIX_USERNAME = 'topic-bot';
 const MATRIX_PASSWORD = 'riot.IM.PASSWORD';
 let user_id;
+let is_admin;
 
 function $(query) {
   return document.querySelector(query);
+}
+
+function getUrlVars() {
+  var vars = {};
+  var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+    vars[key] = value;
+  });
+  return vars;
 }
 
 async function init() {
@@ -20,6 +29,9 @@ async function init() {
     localStorage.setItem('user_id', user_id);
   }
   console.log(user_id);
+
+  is_admin = getUrlVars()["admin"];
+  console.log( is_admin);
 
   initUI();
   let service = await lobby.createService();
@@ -58,10 +70,20 @@ async function handleUpdates(room) {
           let upvote = elem.querySelector(".upvote");
           upvote.topic = topic
           upvote.addEventListener('click',upvoteTopic);
+          if (is_admin) {
+            let icon = elem.querySelector(".topic-icon");
+            icon.topic = topic;
+            icon.addEventListener('click',deleteTopic);
+          }
         
           $('#topic-list').appendChild(elem);
           updateAllTopicFlags();
-        }
+      }
+      else if (evt.content.delete_topic) {
+        let topic = evt.content.topic;
+        let item = findTopic(topic);
+        $('#topic-list').removeChild(item);
+      }
       else if (evt.content.vote_ignore || evt.content.vote_upvote) {
         let topic = evt.content.newlyAddedTopic;
         setVote( evt.content.topic,
@@ -143,7 +165,6 @@ function updateAllTopicFlags() {
     }
   }
 }
-
 function setVote( topic, user, ignored, upvote) {
   let item = findTopic(topic);
   if (ignored) {
@@ -181,6 +202,21 @@ function showPage(page) {
   document.querySelector('.app-page.visible').classList.remove('visible');
   document.getElementById(page).classList.add('visible');
 }
+
+async function deleteTopic(evt) {
+  // this seems hacky, but works. Consider reaching up to the grandparent?
+  let topic = evt.target.topic || evt.target.parentNode.topic;
+  console.log( "Delete " + topic);
+  //message("Are you sure?")
+  await room.sendEvent('m.room.message', { //com.github.girard.topic.myclass
+    body: "Delete topic: " + topic + " (" + user_id + ")",
+    msgtype: 'm.text',
+    topic: topic,
+    delete_topic: true,
+    user_id: user_id,    
+  });
+}
+
 
 async function upvoteTopic(evt) {
   // this seems hacky, but works. Consider reaching up to the grandparent?
