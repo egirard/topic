@@ -20,3 +20,6 @@
 .controls > button {
   display: inline-block;
 }
+.actions {
+  white-space: nowrap;
+}
