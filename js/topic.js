@@ -160,8 +160,13 @@ function setVote( topic, user, ignored, upvote) {
 }
 
 function initUI() {
-  let button = document.getElementById("AddTopic");
-  button.addEventListener('click',addRoom);
+  $("#add-topic").addEventListener('click', function() {
+    showPage('page-add');
+  });
+  $('#cancel-add-topic').addEventListener('click', function(evt) {
+    showPage('page-main');
+    evt.preventDefault();
+  });
   $('#formNewTopic').onsubmit = function(evt) {
     evt.preventDefault();
     confirmAdd();
@@ -178,10 +183,6 @@ function initUI() {
 function showPage(page) {
   document.querySelector('.app-page.visible').classList.remove('visible');
   document.getElementById(page).classList.add('visible');
-}
-
-async function addRoom() {
-  showPage('page-add');
 }
 
 async function upvoteTopic(evt) {
