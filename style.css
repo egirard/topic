@@ -1,0 +1,22 @@
+.app-page {
+  /* Pages should not be visible until JS determines which one should
+     be shown. */
+  display: none;
+  margin: 15px;
+}
+.app-page.visible {
+  display: block;
+}
+#templates {
+  display: none;
+}
+.controls {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  margin: 15px;
+  text-align: right;
+}
+.controls > button {
+  display: inline-block;
+}

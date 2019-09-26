@@ -5,21 +5,7 @@
     <link rel="stylesheet" href="./third_party/mdl/material.min.css">
     <script src="./third_party/mdl/material.min.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <style>
-      .app-page {
-        /* Pages should not be visible until JS determines which one should
-           be shown. */
-        display: none;
-        margin: 15px;
-      }
-      .app-page.visible {
-        display: block;
-      }
-      #templates {
-        display: none;
-      }
-
-    </style>
+    <link rel="stylesheet" href="style.css">
     <script src="js/topic.js" type="module"></script>
     <!-- Consider using bundle.js for deployment.
     -->
@@ -115,10 +101,12 @@
                 
                 <ul id="topic-list" class="demo-list-three mdl-list">
                 </ul>
-          <!-- Colored FAB button with ripple TODO: Move to bottom-right (fixed-pos)-->
-          <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored" id="AddTopic">
-            <i class="material-icons">add</i>
-          </button>
+          <!-- Colored FAB button with ripple -->
+          <div class="controls">
+            <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored" id="AddTopic">
+              <i class="material-icons">add</i>
+            </button>
+          </div>
         </div>
         <div class="page-content app-page" id="page-add">
           <!-- Square card -->
@@ -149,7 +137,7 @@
                 <label class="mdl-textfield__label" for="newTopicDescription">Describe it - what will we talk about?</label>
               </div>
             
-              <div class="mdl-card__actions mdl-card--border">
+              <div class="controls">
                 <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored" id="addRoomDone">
                     <i class="material-icons">done</i>
                 </button> 
