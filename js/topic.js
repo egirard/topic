@@ -82,10 +82,11 @@ async function handleUpdates(room) {
       else if (evt.content.delete_topic) {
         let topic = evt.content.topic;
         let item = findTopic(topic);
-        $('#topic-list').removeChild(item);
+        if (item)
+          $('#topic-list').removeChild(item);
       }
       else if (evt.content.vote_ignore || evt.content.vote_upvote) {
-        let topic = evt.content.newlyAddedTopic;
+        //let topic = evt.content.newlyAddedTopic;
         setVote( evt.content.topic,
           evt.content.user_id,
           evt.content.vote_ignore,
@@ -167,6 +168,8 @@ function updateAllTopicFlags() {
 }
 function setVote( topic, user, ignored, upvote) {
   let item = findTopic(topic);
+  if (!item)
+    return;
   if (ignored) {
     item.upvotes.delete(user);
     item.ignored.add(user);
