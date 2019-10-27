@@ -1,0 +1,3 @@
+[submodule "third_party/lobby"]
+	path = third_party/lobby
+	url = https://github.com/flackr/lobby.git

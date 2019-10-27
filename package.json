@@ -1,0 +1,24 @@
+{
+  "name": "topic",
+  "version": "0.0.3",
+  "description": "Tool for unconference topic selection",
+  "repository": "",
+  "author": "Eugene Girard <eugene.girard@gmail.com>",
+  "scripts": {
+    "build": "webpack --mode production"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.6.0",
+    "@babel/core": "^7.6.0",
+    "@babel/plugin-transform-runtime": "^7.6.0",
+    "@babel/preset-env": "^7.6.0",
+    "babel-loader": "^8.0.6",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-polyfill": "^6.26.0",
+    "babel-regenerator-runtime": "^6.5.0",
+    "regenerator-runtime": "^0.13.3",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.9",
+    "whatwg-fetch": "^3.0.0"
+  }
+}
