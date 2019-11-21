@@ -1,7 +1,7 @@
 const path = require('path');
 
 const config = {
-    entry: ['babel-polyfill', 'whatwg-fetch'],
+    entry: ['babel-polyfill', 'whatwg-fetch', './src/index.js'],
     devtool: 'source-map',
     module: {
       rules: [
