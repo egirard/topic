@@ -1,4 +1,5 @@
-import * as lobby from '../third_party/lobby/src/lobby.js';
+'use strict';
+import * as lobby from './lobby.js';
 
 document.addEventListener('DOMContentLoaded', init);
 

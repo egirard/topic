@@ -1,7 +1,8 @@
 const path = require('path');
 
-const config = {
-    entry: ['babel-polyfill', 'whatwg-fetch', './src/index.js'],
+function getCommonConfig() {
+  return {
+    entry: ['babel-polyfill', 'whatwg-fetch'],
     devtool: 'source-map',
     module: {
       rules: [
@@ -14,10 +15,20 @@ const config = {
         }
       ]
     },
-    output: {
-      path: path.resolve(__dirname, 'dist'),
-      filename: 'main.js',
-    }
   };
+}
 
-module.exports = [config];
+function createTarget(entries, outputPath, outputFile) {
+  let config = getCommonConfig();
+  for (var i = 0; i < entries.length; i++)
+    config.entry.push(entries[i]);
+  config.output = {
+    path: path.resolve(__dirname, outputPath),
+    filename: outputFile
+  }
+  return config;
+}
+
+const topicConfig = createTarget(['./src/index.js'], 'dist', 'main.min.js');
+
+module.exports = [topicConfig];
