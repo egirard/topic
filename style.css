@@ -26,3 +26,13 @@
 #page-main .mdl-tabs__tab {
   padding: 0 2px;
 }
+.demo-card-square.mdl-card {
+  width: 100%;
+  height: 100%;
+}
+.demo-card-square > .mdl-card__title {
+  color: #fff;
+  background:
+    /* sourced from https://www.kesher.org.il/en/nta-2/ */
+    url('/assets/nta.jpg') bottom right 15% no-repeat #46B6AC;
+}
