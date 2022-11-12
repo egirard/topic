@@ -19,7 +19,7 @@
     "babel-regenerator-runtime": "^6.5.0",
     "regenerator-runtime": "^0.13.3",
     "webpack": "^4.41.2",
-    "webpack-cli": "^3.3.9",
+    "webpack-cli": "^3.3.12",
     "whatwg-fetch": "^3.0.0"
   }
 }
